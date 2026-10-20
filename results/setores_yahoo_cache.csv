@@ -1,0 +1,178 @@
+indice,ticker,setor
+S&P100,AAPL,Technology
+S&P100,ABT,Healthcare
+S&P100,ACN,Technology
+S&P100,ADBE,Technology
+S&P100,ABBV,Healthcare
+S&P100,AMGN,Healthcare
+S&P100,AMAT,Technology
+S&P100,AMT,Real Estate
+S&P100,AMZN,Consumer Cyclical
+S&P100,AMD,Technology
+S&P100,ANET,Technology
+S&P100,AVGO,Technology
+S&P100,AXP,Financial Services
+S&P100,BAC,Financial Services
+S&P100,BLK,Financial Services
+S&P100,BKNG,Consumer Cyclical
+S&P100,BA,Industrials
+S&P100,BMY,Healthcare
+S&P100,BRK-B,Financial Services
+S&P100,C,Financial Services
+S&P100,BNY,Financial Services
+S&P100,COF,Financial Services
+S&P100,COP,Energy
+S&P100,CAT,Industrials
+S&P100,CMCSA,Communication Services
+S&P100,COST,Consumer Defensive
+S&P100,CVS,Healthcare
+S&P100,CRM,Technology
+S&P100,CSCO,Technology
+S&P100,CVX,Energy
+S&P100,DE,Industrials
+S&P100,DHR,Healthcare
+S&P100,DIS,Communication Services
+S&P100,DELL,Technology
+S&P100,DUK,Utilities
+S&P100,GD,Industrials
+S&P100,GE,Industrials
+S&P100,EMR,Industrials
+S&P100,GEV,Industrials
+S&P100,FDX,Industrials
+S&P100,GILD,Healthcare
+S&P100,GM,Consumer Cyclical
+S&P100,GOOG,Communication Services
+S&P100,HD,Consumer Cyclical
+S&P100,GOOGL,Communication Services
+S&P100,IBM,Technology
+S&P100,INTC,Technology
+S&P100,GS,Financial Services
+S&P100,JNJ,Healthcare
+S&P100,KO,Consumer Defensive
+S&P100,INTU,Technology
+S&P100,ISRG,Healthcare
+S&P100,LIN,Basic Materials
+S&P100,LLY,Healthcare
+S&P100,JPM,Financial Services
+S&P100,LRCX,Technology
+S&P100,MA,Financial Services
+S&P100,LOW,Consumer Cyclical
+S&P100,LMT,Industrials
+S&P100,MDLZ,Consumer Defensive
+S&P100,MDT,Healthcare
+S&P100,MCD,Consumer Cyclical
+S&P100,META,Communication Services
+S&P100,MO,Consumer Defensive
+S&P100,MRK,Healthcare
+S&P100,MS,Financial Services
+S&P100,MSFT,Technology
+S&P100,MU,Technology
+S&P100,NEE,Utilities
+S&P100,MMM,Industrials
+S&P100,NFLX,Communication Services
+S&P100,NOW,Technology
+S&P100,NVDA,Technology
+S&P100,ORCL,Technology
+S&P100,PANW,Technology
+S&P100,PEP,Consumer Defensive
+S&P100,PFE,Healthcare
+S&P100,PLTR,Technology
+S&P100,PM,Consumer Defensive
+S&P100,PG,Consumer Defensive
+S&P100,QCOM,Technology
+S&P100,RTX,Industrials
+S&P100,SBUX,Consumer Cyclical
+S&P100,SCHW,Financial Services
+S&P100,SO,Utilities
+S&P100,SNDK,Technology
+S&P100,T,Communication Services
+S&P100,TMO,Healthcare
+S&P100,TMUS,Communication Services
+S&P100,TSLA,Consumer Cyclical
+S&P100,TXN,Technology
+S&P100,UBER,Technology
+S&P100,UNH,Healthcare
+S&P100,UNP,Industrials
+S&P100,USB,Financial Services
+S&P100,UPS,Industrials
+S&P100,V,Financial Services
+S&P100,VZ,Communication Services
+S&P100,WFC,Financial Services
+S&P100,XOM,Energy
+IBOV,ABEV3.SA,Consumer Defensive
+IBOV,ASAI3.SA,Consumer Defensive
+S&P100,WMT,Consumer Defensive
+IBOV,ALOS3.SA,Real Estate
+IBOV,AXIA3.SA,Utilities
+IBOV,AURE3.SA,Utilities
+IBOV,AZZA3.SA,Consumer Cyclical
+IBOV,B3SA3.SA,Financial Services
+IBOV,BBDC3.SA,Financial Services
+IBOV,BBDC4.SA,Financial Services
+IBOV,BBSE3.SA,Financial Services
+IBOV,BRAP4.SA,Financial Services
+IBOV,BRAV3.SA,Energy
+IBOV,BBAS3.SA,Financial Services
+IBOV,CXSE3.SA,Financial Services
+IBOV,CEAB3.SA,Consumer Cyclical
+IBOV,CMIG4.SA,Utilities
+IBOV,BPAC11.SA,Financial Services
+IBOV,COGN3.SA,Consumer Defensive
+IBOV,CPLE3.SA,Utilities
+IBOV,CSMG3.SA,Utilities
+IBOV,CMIN3.SA,Basic Materials
+IBOV,CURY3.SA,Real Estate
+IBOV,CYRE3.SA,Consumer Cyclical
+IBOV,CSAN3.SA,Energy
+IBOV,DIRR3.SA,Real Estate
+IBOV,CPFE3.SA,Utilities
+IBOV,EMBJ3.SA,Industrials
+IBOV,ENGI11.SA,Utilities
+IBOV,EGIE3.SA,Utilities
+IBOV,FLRY3.SA,Healthcare
+IBOV,EQTL3.SA,Utilities
+IBOV,GGBR4.SA,Basic Materials
+IBOV,ENEV3.SA,Utilities
+IBOV,GOAU4.SA,Basic Materials
+IBOV,HAPV3.SA,Financial Services
+IBOV,HYPE3.SA,Healthcare
+IBOV,ISAE4.SA,Utilities
+IBOV,ITUB4.SA,Financial Services
+IBOV,ITSA4.SA,Industrials
+IBOV,IGTI11.SA,Real Estate
+IBOV,RENT3.SA,Industrials
+IBOV,LREN3.SA,Consumer Cyclical
+IBOV,MGLU3.SA,Consumer Cyclical
+IBOV,KLBN11.SA,Basic Materials
+IBOV,MBRF3.SA,Consumer Defensive
+IBOV,POMO4.SA,Industrials
+IBOV,MOTV3.SA,Industrials
+IBOV,BEEF3.SA,Consumer Defensive
+IBOV,MULT3.SA,Real Estate
+IBOV,MRVE3.SA,Real Estate
+IBOV,NATU3.SA,Consumer Defensive
+IBOV,PETR3.SA,Energy
+IBOV,PSSA3.SA,Financial Services
+IBOV,PRIO3.SA,Energy
+IBOV,RADL3.SA,Healthcare
+IBOV,RDOR3.SA,Healthcare
+IBOV,RAIL3.SA,Industrials
+IBOV,SBSP3.SA,Utilities
+IBOV,PETR4.SA,Energy
+IBOV,CSNA3.SA,Basic Materials
+IBOV,SANB11.SA,Financial Services
+IBOV,SMFT3.SA,Consumer Cyclical
+IBOV,SUZB3.SA,Basic Materials
+IBOV,TAEE11.SA,Utilities
+IBOV,VIVT3.SA,Communication Services
+IBOV,TEND3.SA,Real Estate
+IBOV,UGPA3.SA,Energy
+IBOV,TOTS3.SA,Technology
+IBOV,VALE3.SA,Basic Materials
+IBOV,USIM5.SA,Basic Materials
+IBOV,TIMS3.SA,Communication Services
+IBOV,VAMO3.SA,Industrials
+IBOV,VBBR3.SA,Consumer Cyclical
+IBOV,VIVA3.SA,Consumer Cyclical
+IBOV,WEGE3.SA,Industrials
+IBOV,YDUQ3.SA,Consumer Defensive

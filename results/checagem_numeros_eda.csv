@@ -1,0 +1,23 @@
+indicador,S&P100,IBOV
+ativos no universo,101,76
+séries com cobertura < 80%,2,5
+ativos no EDA (cobertura ≥ 80%),99,71
+outliers |r|>15% (brutos),217,243
+% outliers na crise Covid,37,68
+retorno acumulado (%),190.7,77.9
+volatilidade anualizada (%),20.4,23.5
+curtose,13.1,20.7
+pior dia (%),-11.6 em 2020-03-16,-14.8 em 2020-03-12
+pior mês (%),-10.3 em 03/2020,-29.9 em 03/2020
+melhor mês (%),12.7 em 04/2020,15.9 em 11/2020
+pico vol 21d (% a.a.),95 em 2020-04-06,127 em 2020-04-06
+vol 21d mediana (% a.a.),14.5,17.2
+drawdown máximo (%),-31.5 em 2020-03-23,-46.8 em 2020-03-23
+correlação mediana com índice,0.55,0.60
+"% ações com correlação > 0,7",9,20
+"% ações com correlação > 0,5",67,83
+maior correlação,MSFT 0.79,ITSA4.SA 0.81
+menor correlação,VZ 0.29,SUZB3.SA 0.26
+vol mediana das ações (% a.a.),31.8,38.5
+corr. pares Covid / 2023–24 / 2025–26,0.72 / 0.19 / 0.19,0.69 / 0.30 / 0.33
+PC1 Covid / 2023–24 / 2025–26 (%),73 / 22 / 23,70 / 33 / 37
