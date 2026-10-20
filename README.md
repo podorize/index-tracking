@@ -44,30 +44,41 @@ Pelo Teorema de Pitágoras no $\mathbb{R}^T$, o erro total decompõe-se ortogona
 
 ---
 
-## 📊 Principais Resultados (Fronteira de Pareto e Custos Reais)
+## 📊 Comparativo Geral de Modelos (Guia Parte 2 - Tabela 4.3)
 
-Avaliação em 20 trimestres fora da amostra com $K = 10$, considerando custos de transação explícitos:
-- **B3 (Ibovespa):** $c = 15\text{ bps}$ ($0,0015$)
-- **EUA (S&P 100):** $c = 5\text{ bps}$ ($0,0005$)
-
-### IBOVESPA ($K = 10$, $c = 15\text{ bps}$)
-| $\lambda_{\text{anual}}$ | Tracking Error (% a.a.) | Giro Médio (% trim) | Retorno Anual Líquido (%) | Alfa Líquido (p.p. a.a.) |
-| :---: | :---: | :---: | :---: | :---: |
-| **0.0 (sem penalidade)** | 4,50% | 21,51% | 13,32% | +2,70 |
-| **1.5** | 4,46% | 9,09% | 13,06% | +2,45 |
-| **3.0 ⭐ (Ótimo)** | **4,37%** | **5,56%** | **12,42%** | **+1,81** |
-| **6.0** | 4,50% | 3,79% | 13,32% | +2,70 |
-| **25.0** | 4,74% | 1,03% | 12,53% | +1,91 |
-
-> **Descoberta:** No Ibovespa, $\lambda = 3.0$ atuou como um **regularizador estatístico**: o Tracking Error caiu de 4,50% para **4,37%**, enquanto o giro trimestral despencou **74%** (de 21,5% para 5,56%).
+Abaixo está o benchmark consolidado dos 7 modelos avaliados em **20 trimestres fora da amostra (set/2021 a set/2026)** com $K = 10$, considerando custos explícitos de transação:
 
 ### S&P 100 ($K = 10$, $c = 5\text{ bps}$)
-| $\lambda_{\text{anual}}$ | Tracking Error (% a.a.) | Giro Médio (% trim) | Retorno Anual Líquido (%) | Alfa Líquido (p.p. a.a.) |
-| :---: | :---: | :---: | :---: | :---: |
-| **0.0 (sem penalidade)** | 4,88% | 26,36% | 17,17% | +3,23 |
-| **3.0** | 5,11% | 7,14% | 17,79% | +3,85 |
-| **6.0 ⭐ (Ótimo)** | **4,93%** | **4,37%** | **18,20%** | **+4,26** |
-| **25.0** | 4,98% | 1,24% | 16,50% | +2,55 |
+| Modelo | Família | Tracking Error (% a.a.) | Correlação | $R^2$ | Giro Médio (% trim) | Retorno Líquido (% a.a.) | Alfa Líquido (p.p.) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Baseline: Top K Peso** | Heurística Ingênua | 10,29% | 0,91 | 0,67 | 7,85% | 25,44% | +11,49 |
+| **Baseline: Top K Corr (1/K)** | Heurística Ingênua | 10,90% | 0,93 | 0,63 | 18,04% | 19,12% | +5,17 |
+| **Top K Corr (QP Otimizado)** | Seleção + Alocação | 8,25% | 0,93 | 0,79 | 25,32% | 11,98% | -1,97 |
+| **Lasso (L1 Positivo + QP)** | Regularização $L_1$ | 14,74% | 0,89 | 0,32 | 37,30% | 20,62% | +6,68 |
+| **Clustering Hierárquico + Repr.** | Não-Supervisionado | 8,96% | 0,87 | 0,75 | 37,67% | 13,04% | -0,90 |
+| **Heurística Gulosa + Swaps** | Busca Combinatória | 5,11% | 0,96 | 0,92 | 34,98% | 17,18% | +3,24 |
+| **MIQP Gurobi (Turnover $\lambda=6.0$)** | Otimização Global | **4,91%** | **0,96** | **0,92** | **4,52%** | **18,18%** | **+4,23** |
+
+### IBOVESPA ($K = 10$, $c = 15\text{ bps}$)
+| Modelo | Família | Tracking Error (% a.a.) | Correlação | $R^2$ | Giro Médio (% trim) | Retorno Líquido (% a.a.) | Alfa Líquido (p.p.) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Baseline: Top K Peso** | Heurística Ingênua | 12,19% | 0,83 | 0,51 | 13,09% | 8,50% | -2,12 |
+| **Baseline: Top K Corr (1/K)** | Heurística Ingênua | 11,20% | 0,89 | 0,58 | 17,60% | 16,17% | +5,55 |
+| **Top K Corr (QP Otimizado)** | Seleção + Alocação | 9,95% | 0,90 | 0,67 | 20,59% | 14,51% | +3,90 |
+| **Lasso (L1 Positivo + QP)** | Regularização $L_1$ | 16,53% | 0,87 | 0,10 | 28,11% | 10,54% | -0,08 |
+| **Clustering Hierárquico + Repr.** | Não-Supervisionado | 7,47% | 0,90 | 0,81 | 30,67% | 20,38% | +9,77 |
+| **Heurística Gulosa + Swaps** | Busca Combinatória | 4,56% | 0,97 | 0,93 | 29,07% | 12,15% | +1,53 |
+| **MIQP Gurobi (Turnover $\lambda=3.0$)** | Otimização Global | **4,52%** | **0,97** | **0,93** | **6,38%** | **12,87%** | **+2,26** |
+
+---
+
+## 🎲 Testes de Robustez e Estabilidade
+
+1. **Modelo Nulo (Monte Carlo com 1.000 Carteiras Aleatórias):**
+   * **S&P 100:** O modelo ótimo obteve $\text{TE} = 4,91\%$ vs. mediana aleatória de $11,72\%$. **Superou 100,0% das 1.000 carteiras sorteadas ao acaso ($p < 0,001$)**.
+   * **IBOVESPA:** O modelo ótimo obteve $\text{TE} = 4,52\%$ vs. mediana aleatória de $7,89\%$. **Superou 99,0% das carteiras aleatórias ($p = 0,01$)**.
+2. **Teste de Estresse (Remoção da Maior Ação):**
+   * No Ibovespa, remover a maior ação (ITSA4) elevou o TE de apenas $2,92\%$ para $3,08\%$, demonstrando que o modelo redistribui os pesos em ativos correlatos sem perder a aderência estrutural ($R^2 = 0,96$).
 
 ---
 
