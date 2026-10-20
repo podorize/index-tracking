@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[brazil]{babel}
+\usepackage[brazilian]{babel}
 \usepackage{geometry}
 \geometry{
   a4paper,
@@ -163,8 +163,8 @@ Pelo Teorema de Pitágoras, $\|\mathbf{e}\|^2 = \|\mathbf{e}_{\parallel}\|^2 + \
 \subsection{Convenções de Preços e Calendários}
 Coletamos cotações diárias de 30/09/2019 a 30/09/2026 (1.759 pregões no S\&P 100 e 1.742 no Ibovespa). Cada mercado adota a convenção metodológica do seu benchmark:
 \begin{itemize}
-    \item \textbf{S\&P 100 (^OEX):} Índice de retorno de preços (\textit{price return}). Desconsidera o pagamento de dividendos. As ações utilizam preço de fechamento bruto (\texttt{Close}).
-    \item \textbf{IBOVESPA (^BVSP):} Índice de retorno total (\textit{total return}). Reinveste automaticamente todos os proventos brutos. As ações utilizam o fechamento ajustado (\texttt{Adj Close}).
+    \item \textbf{S\&P 100 (\texttt{\^{}OEX}):} Índice de retorno de preços (\textit{price return}). Desconsidera o pagamento de dividendos. As ações utilizam preço de fechamento bruto (\texttt{Close}).
+    \item \textbf{IBOVESPA (\texttt{\^{}BVSP}):} Índice de retorno total (\textit{total return}). Reinveste automaticamente todos os proventos brutos. As ações utilizam o fechamento ajustado (\texttt{Adj Close}).
 \end{itemize}
 
 \subsection{Triagem Algorítmica e Auditoria Oficial}
@@ -480,7 +480,7 @@ Para cumprir o requisito da Seção 4.3 do Guia Parte 2, implementamos e executa
 \small
 \caption{\textbf{Tabela Comparativa Oficial de Modelos Fora da Amostra ($K = 10$, 20 Trimestres).}}
 \label{tab:comparativo_oficial}
-\begin{tabularx}{\textwidth}{lcccccc}
+\begin{tabularx}{\textwidth}{Xcccccc}
 \toprule
 \textbf{Modelo / Algoritmo} & \textbf{TE (\% a.a.)} & \textbf{Viés (p.p.)} & \textbf{Corr.} & \textbf{$R^2$} & \textbf{Giro (\%/tri)} & \textbf{Ret. Líq. (\% a.a.)} \\
 \midrule
@@ -656,7 +656,7 @@ O projeto respondeu com êxito a todas as perguntas formuladas pelo briefing da 
 12 & Rebalanceamento de 2026 & 4 entradas e 4 saídas no S\&P 100 & Comunicado S\&P Dow Jones \\
 13 & Comportamento dos Índices & S\&P $+191\%$ em USD vs. Ibov $+78\%$ em BRL & Fig. \ref{fig:performance_fat_tails}a \\
 14 & Caudas Gordas e Curtose & Retornos com curtose 13,1 e 20,7 & Fig. \ref{fig:performance_fat_tails}b \\
-15 & Volatilidade Móvel e Crises & COVID-19 como maior choque histórico & Fig. \ref{fig:vol_movel_timeline} \\
+15 & Volatilidade Móvel e Crises & COVID-19 como maior choque histórico & Fig. \ref{fig:retornos_mensais_vol}b \\
 16 & Quem se Parece com o Índice & Nenhuma ação isolada basta ($R^2 \le 0,65$) & Fig. \ref{fig:risco_retorno_beta}b \\
 17 & Pares Redundantes & Alphabet, Petrobras e Itaúsa & Fig. \ref{fig:heatmaps_setores}a \\
 18 & Análise por Setor & Setor financeiro lidera aderência & Fig. \ref{fig:heatmaps_setores}b \\
@@ -669,9 +669,9 @@ O projeto respondeu com êxito a todas as perguntas formuladas pelo briefing da 
 25 & Walk-Forward de 20 Trimestres & Teste estrito out-of-sample sem look-ahead & Desenho das janelas \\
 26 & Fronteira de Cardinalidade & Ganho decrescente de adicionar ações & Fig. \ref{fig:fronteira_k_degradacao}a \\
 27 & Degradação Amostral & Erro cresce 1,4x fora da amostra no S\&P & Fig. \ref{fig:fronteira_k_degradacao}b \\
-28 & Erro ao Longo do Tempo & S\&P mais difícil desde 2024 & Fig. \ref{fig:erro_trimestral_bova11}a \\
-29 & Critério do BOVA11 & Limite de $\pm 4$ p.p. estourado com 10 ações & Fig. \ref{fig:erro_trimestral_bova11}b \\
-30 & Heurística vs. Gurobi & Heurística rápida chega a 0,07 p.p. do solver & Fig. comparativa \\
+28 & Erro ao Longo do Tempo & S\&P mais difícil desde 2024 & Fig. \ref{fig:erro_trimestral} \\
+29 & Critério do BOVA11 & Limite de $\pm 4$ p.p. estourado com 10 ações & Fig. \ref{fig:trajetoria_desvio12m}b \\
+30 & Heurística vs. Gurobi & Heurística rápida chega a 0,07 p.p. do solver & Fig. \ref{fig:miqp_heuristica_janelas}a \\
 31 & Ativos Mais Escolhidos & Apple, Vale, Petrobras e mini-índices & Fig. \ref{fig:turnover_ativos_ancora}b \\
 32 & Fronteira de Pareto & $\lambda = 3.0$ reduz giro em 74\% no Ibov & Fig. \ref{fig:pareto_detalhada} \\
 33 & Benchmark dos 7 Modelos & MIQP com turnover vence baselines e Lasso & Fig. \ref{fig:comparacao_modelos_barras} \\
