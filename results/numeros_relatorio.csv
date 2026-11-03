@@ -1,0 +1,119 @@
+secao,item,valor
+Etapa 1,"S&P100: chance média da combinação escolhida (252, 63, 6.0)",22.64
+Etapa 1,S&P100: distância da segunda colocada (p.p.),0.25
+Etapa 1,"IBOV: chance média da combinação escolhida (252, 21, 3.0)",31.92
+Etapa 1,IBOV: distância da segunda colocada (p.p.),0.0
+Etapa 2,"Conservador (10%), S&P100: K = 50, chance + erro padrão",6.18
+Etapa 2,"Moderado (20%), S&P100: K = 30, chance + erro padrão",10.49
+Etapa 2,"Arrojado (30%), S&P100: K = 20, chance + erro padrão",20.96
+Etapa 2,"Conservador (10%), IBOV: K = 999, chance + erro padrão",11.39
+Etapa 2,"Moderado (20%), IBOV: K = 30, chance + erro padrão",19.0
+Etapa 2,"Arrojado (30%), IBOV: K = 30, chance + erro padrão",19.0
+Teste,"S&P100, K = 50 (conservador): chance prevista",4.79
+Teste,"S&P100, K = 50 (conservador): chance no teste",6.51
+Teste,"S&P100, K = 50 (conservador): erro médio das janelas, previsto",1.84
+Teste,"S&P100, K = 50 (conservador): erro médio das janelas, teste",1.8
+Teste,"S&P100, K = 50 (conservador): erro do período de teste (% a.a.)",2.1
+Teste,"S&P100, K = 50 (conservador): janelas acima de 4 p.p. (de 4)",1.0
+Teste,"S&P100, K = 50 (conservador): janelas acima de 3 p.p. (de 4)",2.0
+Teste,"S&P100, K = 50 (conservador): maior diferença de 12 meses (p.p.)",4.57
+Teste,"S&P100, K = 50 (conservador): giro (% a.a.)",11.87
+Teste,"S&P100, K = 50 (conservador): custo (R$ por ano a cada R$ 1 milhão)",59.33
+Teste,"S&P100, K = 50 (conservador): retorno acumulado da carteira (%)",39.31
+Teste,"S&P100, K = 50 (conservador): retorno acumulado do índice (%)",34.32
+Teste,"S&P100, K = 30 (moderado): chance prevista",9.39
+Teste,"S&P100, K = 30 (moderado): chance no teste",12.45
+Teste,"S&P100, K = 30 (moderado): erro médio das janelas, previsto",2.24
+Teste,"S&P100, K = 30 (moderado): erro médio das janelas, teste",2.42
+Teste,"S&P100, K = 30 (moderado): erro do período de teste (% a.a.)",2.7
+Teste,"S&P100, K = 30 (moderado): janelas acima de 4 p.p. (de 4)",0.0
+Teste,"S&P100, K = 30 (moderado): janelas acima de 3 p.p. (de 4)",1.0
+Teste,"S&P100, K = 30 (moderado): maior diferença de 12 meses (p.p.)",3.41
+Teste,"S&P100, K = 30 (moderado): giro (% a.a.)",14.73
+Teste,"S&P100, K = 30 (moderado): custo (R$ por ano a cada R$ 1 milhão)",73.64
+Teste,"S&P100, K = 30 (moderado): retorno acumulado da carteira (%)",37.29
+Teste,"S&P100, K = 30 (moderado): retorno acumulado do índice (%)",34.32
+Teste,"S&P100, K = 20 (arrojado): chance prevista",18.81
+Teste,"S&P100, K = 20 (arrojado): chance no teste",18.37
+Teste,"S&P100, K = 20 (arrojado): erro médio das janelas, previsto",2.81
+Teste,"S&P100, K = 20 (arrojado): erro médio das janelas, teste",2.94
+Teste,"S&P100, K = 20 (arrojado): erro do período de teste (% a.a.)",3.59
+Teste,"S&P100, K = 20 (arrojado): janelas acima de 4 p.p. (de 4)",0.0
+Teste,"S&P100, K = 20 (arrojado): janelas acima de 3 p.p. (de 4)",2.0
+Teste,"S&P100, K = 20 (arrojado): maior diferença de 12 meses (p.p.)",3.85
+Teste,"S&P100, K = 20 (arrojado): giro (% a.a.)",15.19
+Teste,"S&P100, K = 20 (arrojado): custo (R$ por ano a cada R$ 1 milhão)",75.95
+Teste,"S&P100, K = 20 (arrojado): retorno acumulado da carteira (%)",35.73
+Teste,"S&P100, K = 20 (arrojado): retorno acumulado do índice (%)",34.32
+Teste,"IBOV, K = 999 (conservador): chance prevista",9.0
+Teste,"IBOV, K = 999 (conservador): chance no teste",2.37
+Teste,"IBOV, K = 999 (conservador): erro médio das janelas, previsto",2.3
+Teste,"IBOV, K = 999 (conservador): erro médio das janelas, teste",1.75
+Teste,"IBOV, K = 999 (conservador): erro do período de teste (% a.a.)",1.66
+Teste,"IBOV, K = 999 (conservador): janelas acima de 4 p.p. (de 13)",0.0
+Teste,"IBOV, K = 999 (conservador): janelas acima de 3 p.p. (de 13)",0.0
+Teste,"IBOV, K = 999 (conservador): maior diferença de 12 meses (p.p.)",1.63
+Teste,"IBOV, K = 999 (conservador): giro (% a.a.)",6.25
+Teste,"IBOV, K = 999 (conservador): custo (R$ por ano a cada R$ 1 milhão)",93.71
+Teste,"IBOV, K = 999 (conservador): retorno acumulado da carteira (%)",43.27
+Teste,"IBOV, K = 999 (conservador): retorno acumulado do índice (%)",42.17
+Teste,"IBOV, K = 30 (moderado e arrojado): chance prevista",15.9
+Teste,"IBOV, K = 30 (moderado e arrojado): chance no teste",11.45
+Teste,"IBOV, K = 30 (moderado e arrojado): erro médio das janelas, previsto",2.71
+Teste,"IBOV, K = 30 (moderado e arrojado): erro médio das janelas, teste",2.36
+Teste,"IBOV, K = 30 (moderado e arrojado): erro do período de teste (% a.a.)",2.23
+Teste,"IBOV, K = 30 (moderado e arrojado): janelas acima de 4 p.p. (de 13)",0.0
+Teste,"IBOV, K = 30 (moderado e arrojado): janelas acima de 3 p.p. (de 13)",1.0
+Teste,"IBOV, K = 30 (moderado e arrojado): maior diferença de 12 meses (p.p.)",3.61
+Teste,"IBOV, K = 30 (moderado e arrojado): giro (% a.a.)",8.07
+Teste,"IBOV, K = 30 (moderado e arrojado): custo (R$ por ano a cada R$ 1 milhão)",121.04
+Teste,"IBOV, K = 30 (moderado e arrojado): retorno acumulado da carteira (%)",44.66
+Teste,"IBOV, K = 30 (moderado e arrojado): retorno acumulado do índice (%)",42.17
+Teste,"IBOV, K = 20 (fora dos cenários): chance prevista",30.72
+Teste,"IBOV, K = 20 (fora dos cenários): chance no teste",38.94
+Teste,"IBOV, K = 20 (fora dos cenários): erro médio das janelas, previsto",3.24
+Teste,"IBOV, K = 20 (fora dos cenários): erro médio das janelas, teste",2.86
+Teste,"IBOV, K = 20 (fora dos cenários): erro do período de teste (% a.a.)",2.72
+Teste,"IBOV, K = 20 (fora dos cenários): janelas acima de 4 p.p. (de 13)",9.0
+Teste,"IBOV, K = 20 (fora dos cenários): janelas acima de 3 p.p. (de 13)",10.0
+Teste,"IBOV, K = 20 (fora dos cenários): maior diferença de 12 meses (p.p.)",7.14
+Teste,"IBOV, K = 20 (fora dos cenários): giro (% a.a.)",10.51
+Teste,"IBOV, K = 20 (fora dos cenários): custo (R$ por ano a cada R$ 1 milhão)",157.72
+Teste,"IBOV, K = 20 (fora dos cenários): retorno acumulado da carteira (%)",50.56
+Teste,"IBOV, K = 20 (fora dos cenários): retorno acumulado do índice (%)",42.17
+Alternativa simples,"S&P100, K = 30: TE_teste",5.64
+Alternativa simples,"S&P100, K = 30: giro_teste",222.68
+Alternativa simples,"S&P100, K = 30: n4",0.0
+Alternativa simples,"S&P100, K = 30: n",12.0
+Viés de sobrevivência,"S&P100, carteira sem limite: media_ate_corte (p.p.)",0.69
+Viés de sobrevivência,"S&P100, carteira sem limite: max_ate_corte (p.p.)",3.61
+Viés de sobrevivência,"S&P100, carteira sem limite: media_depois (p.p.)",1.33
+Pior rodada do teste,"S&P100, K = 30: queda do índice até 03/04/2025 (%)",-10.02
+Pior rodada do teste,"S&P100, K = 30: diferença carteira − índice (p.p.)",0.92
+Alternativa simples,"IBOV, K = 30: TE_teste",6.91
+Alternativa simples,"IBOV, K = 30: giro_teste",286.15
+Alternativa simples,"IBOV, K = 30: n4",9.0
+Alternativa simples,"IBOV, K = 30: n",13.0
+Viés de sobrevivência,"IBOV, carteira sem limite: media_ate_corte (p.p.)",4.3
+Viés de sobrevivência,"IBOV, carteira sem limite: max_ate_corte (p.p.)",9.09
+Viés de sobrevivência,"IBOV, carteira sem limite: media_depois (p.p.)",0.59
+Pior rodada do teste,"IBOV, K = 30: queda do índice até 02/06/2026 (%)",-6.14
+Pior rodada do teste,"IBOV, K = 30: diferença carteira − índice (p.p.)",0.33
+Decomposição,"S&P100, K = 50: parte do erro de rastreamento (p.p.)",-0.5
+Decomposição,"S&P100, K = 50: parte do desvio (p.p.)",2.21
+Decomposição,"S&P100, K = 30: parte do erro de rastreamento (p.p.)",2.68
+Decomposição,"S&P100, K = 30: parte do desvio (p.p.)",0.38
+Decomposição,"S&P100, K = 20: parte do erro de rastreamento (p.p.)",-15.92
+Decomposição,"S&P100, K = 20: parte do desvio (p.p.)",15.47
+Decomposição,"IBOV, K = 999: parte do erro de rastreamento (p.p.)",-6.63
+Decomposição,"IBOV, K = 999: parte do desvio (p.p.)",0.0
+Decomposição,"IBOV, K = 30: parte do erro de rastreamento (p.p.)",-4.61
+Decomposição,"IBOV, K = 30: parte do desvio (p.p.)",0.17
+Mercado,"S&P100, escolha: correlação mediana com o índice",0.55
+Mercado,"S&P100, escolha: dispersão das ações em torno do índice (% a.a.)",25.6
+Mercado,"S&P100, teste: correlação mediana com o índice",0.4
+Mercado,"S&P100, teste: dispersão das ações em torno do índice (% a.a.)",31.34
+Mercado,"IBOV, escolha: correlação mediana com o índice",0.53
+Mercado,"IBOV, escolha: dispersão das ações em torno do índice (% a.a.)",30.69
+Mercado,"IBOV, teste: correlação mediana com o índice",0.58
+Mercado,"IBOV, teste: dispersão das ações em torno do índice (% a.a.)",28.91

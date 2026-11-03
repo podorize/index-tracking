@@ -1,0 +1,102 @@
+# Metodologia do modelo final
+
+Este documento descreve o modelo do relatório final e como ele é reproduzido pelo código (`python -m src.pipeline`). As etapas
+anteriores do projeto, que levaram a essas escolhas, estão resumidas no fim.
+
+## Pergunta
+
+Quantas ações a Finor precisa para acompanhar o S&P 100 (101 ações, em dólar) e o Ibovespa (76 ações, em reais), dado o risco que
+aceita? O risco é a chance de a diferença acumulada entre a carteira e o índice passar de 4 p.p. em 12 meses, o limite que a CVM
+aplica aos fundos de índice listados (Resolução CVM 175, Anexo Normativo V, Art. 27), contada nos dois sentidos.
+
+## Dados
+
+Preços diários do Yahoo Finance de 30/09/2019 a 30/09/2026, com a lista de ações de 30/09/2026 (`data/cache_dados_finor.pkl`,
+montado e auditado no notebook). Usar a lista atual em todo o período cria viés de sobrevivência; ver "Limites".
+
+## Como cada carteira é montada
+
+Em cada rodada, a heurística com controle de giro (`src/heuristica_giro.py`) escolhe até K ações e os pesos que minimizam o erro
+quadrático diário contra o índice no histórico de treino, mais uma penalidade λ sobre o giro anualizado. A carteira é mantida até a
+rodada seguinte e então refeita (walk-forward, `src/walk_forward.py`). Custos por operação: 0,05% no S&P 100 e 0,15% no Ibovespa,
+descontados dos retornos.
+
+## Períodos
+
+- Escolha: rodadas que terminam até 01/10/2024 (out/2021 a set/2024).
+- Teste final: rodadas seguintes (out/2024 a set/2026), nunca usadas na escolha. As carteiras do teste são simuladas desde o início,
+  com os parâmetros congelados, e só as rodadas do teste entram na avaliação.
+
+## A grade (`src/grade.py`)
+
+448 carteiras por índice e configuração: K ∈ {5, 10, 15, 20, 30, 50, sem limite} × treino de 1 ou 2 anos × rebalanceamento mensal ou
+trimestral × λ ∈ {0; 0,5; 1,5; 3; 6; 12; 25; 50} × 2 índices.
+
+## A chance (`src/metricas.py`)
+
+Em cada janela de 12 meses seguidos, a diferença acumulada é tratada como normal:
+
+- largura: o erro de rastreamento da carteira contra o índice na janela;
+- centro: o desvio médio da carteira menos o da carteira sem limite montada da mesma forma (mesmo histórico, frequência e λ). Isso
+  desconta o viés de sobrevivência, que infla igualmente o rendimento de todas as carteiras.
+
+A chance da janela é P(diferença < −4) + P(diferença > +4); a chance da carteira é a média das janelas. A mesma conta, com a mesma
+referência, é usada na escolha e no teste.
+
+## A regra (`src/regra.py`), separada por índice
+
+1. **Forma de montar.** Para cada uma das 32 combinações de histórico, frequência e λ, a chance média das sete carteiras (5 a 50 ações
+   e sem limite); fica a menor. Resultado: S&P 100 com 1 ano, trimestral, λ = 6; Ibovespa com 1 ano, mensal, λ = 3.
+2. **Número de ações.** Com a forma fixa, o menor K cuja chance mais um erro padrão cabe no risco máximo aceito. O erro padrão vem de
+   um bootstrap circular em blocos de janelas vizinhas (12 mensais ou 4 trimestrais, 2.000 sorteios, semente 0), e a curva de chance é
+   forçada a não subir com o K. Se nenhum K couber, fica a carteira sem limite, com aviso.
+
+| Cenário | Risco máximo | S&P 100 | Ibovespa |
+|---|---|---|---|
+| Conservador | 10% | 50 ações | sem limite (nenhuma cabe) |
+| Moderado (recomendado) | 20% | 30 ações | 30 ações |
+| Arrojado | 30% | 20 ações | 30 ações |
+
+## Avaliação no teste (`src/avaliacao.py`)
+
+Para cada carteira dos cenários, e para a de 20 ações do Ibovespa, que a regra deixou de fora, a avaliação calcula:
+
+- a chance com a mesma conta;
+- o erro de rastreamento;
+- as janelas de 12 meses inteiras no teste que passaram de 4 p.p. (4 no S&P 100, trimestral; 13 no Ibovespa, mensal);
+- o giro e o custo;
+- a comparação com uma alternativa simples (`src/alternativa_simples.py`): as 30 ações mais correlacionadas com o índice no último ano,
+  com pesos de mínimos quadrados, refeita todo mês.
+
+Também calcula a decomposição de Shapley da mudança da chance entre largura e centro. Todos os números citados no relatório ficam em
+`results/numeros_relatorio.csv`.
+
+## Limites
+
+- **Viés de sobrevivência.** As empresas que saíram dos índices não estão nos dados. O centro da chance desconta a parte comum a todas
+  as carteiras, mas a largura não: parte do erro do Ibovespa vem de uma composição antiga que não temos. Em operação, com a lista
+  vigente, o viés some.
+- **A curva normal.** Ela subestima eventos raros.
+- **Amostra curta.** O teste é curto e as janelas se sobrepõem.
+- **Escolha do S&P 100 apertada.** A forma de montar do S&P 100 venceu por 0,25 p.p., menos que o erro padrão.
+
+## Etapas anteriores do projeto
+
+Estão no notebook `notebooks/finor_index_tracking.ipynb` e nos módulos correspondentes de `src/`:
+
+1. **Dados e EDA** (seções 2 a 7 e apêndice A): coleta, correções auditadas (NATU3, UGPA3), qualidade, outliers, viés de
+   sobrevivência, correlação, concentração e liquidez.
+2. **Modelo de otimização** (seções 8 a 13): MIQP com restrição de cardinalidade (`src/optimizer.py`), resolvido no Gurobi a partir da
+   heurística, em walk-forward de 20 trimestres; tamanho da janela de treino.
+3. **Comparação de modelos** (seção 14.2, `src/compare_all_models.py`): sete modelos com K = 10. A otimização com penalidade de giro
+   teve o menor erro e o menor giro nos dois índices. No modelo final, a mesma penalidade é resolvida pela heurística
+   (`src/heuristica_giro.py`), que é determinística: o Gurobi para por tempo e o resultado varia entre execuções, o que atrapalharia
+   comparar as 448 carteiras da grade.
+4. **Controle de giro e custos** (seção 14.3, `src/pareto_experiment.py`): curva de Pareto erro × giro, que motivou a penalidade λ.
+5. **Validação de λ e rebalanceamento** (seções 14.4.1 e 14.5, `src/validacao_lambda.py`, `src/rebalanceamento_experiment.py`):
+   escolha de λ num período separado e comparação de 1 × 2 anos de treino e de rebalanceamento mensal × trimestral. Essas dimensões
+   viraram a grade do modelo final.
+6. **Robustez** (seção 14.6, `src/robustness.py`, `src/estatistica.py`): modelo nulo, regimes de mercado e estresse.
+
+O modelo final substitui as conclusões dessas etapas onde elas diferem. Antes, K, λ e a configuração eram fixados por erro de
+rastreamento médio; agora são escolhidos pela chance de passar do limite da CVM, separadamente por índice e por apetite ao risco.
