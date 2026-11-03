@@ -225,8 +225,8 @@ def figura_fronteira():
 
 
 def figura_validacao_lambda(K=20):
-    """Etapa 12: TE e giro por λ nos 20 trimestres, com a heurística com penalidade (determinística), o λ escolhido e os limites da regra."""
-    from src.validacao_lambda import GRADE_LAMBDAS, TOLERANCIA_TE, REDUCAO_GIRO_MINIMA, escolher_lambda
+    """Etapa 12: TE e giro por λ nos 20 trimestres, com a heurística com penalidade (determinística), o λ escolhido e o limite da regra."""
+    from src.validacao_lambda import GRADE_LAMBDAS, TOLERANCIA_TE, escolher_lambda
     medias = pd.read_csv(PASTA_RESULTADOS / f"validacao_lambda_K{K}.csv")
     escolhido = escolher_lambda(medias)
     fmt = lambda v: f"{v:g}".replace(".", ",")
@@ -250,9 +250,6 @@ def figura_validacao_lambda(K=20):
                 eixo_pct(ax, "y", 1)
                 ax.set_title(NOMES[indice])
             else:
-                limite = (1 - REDUCAO_GIRO_MINIMA) * d[col].iloc[0]
-                ax.axhline(limite, color=TINTA_2, lw=1.1, ls=(0, (1, 2)), zorder=1)
-                ax.text(len(x) - 0.55, limite + 0.6, f"{REDUCAO_GIRO_MINIMA * 100:.0f}% a menos que sem penalidade", ha="right", va="bottom", fontsize=10, color=TINTA_2)
                 ax.set_xlabel("Penalidade λ")
                 eixo_pct(ax)
             ax.set_ylabel(ylabel)
@@ -260,7 +257,7 @@ def figura_validacao_lambda(K=20):
             ax.set_xticklabels([fmt(v) for v in GRADE_LAMBDAS])
     titulos(fig, f"Com \u03bb escolhido nos 20 trimestres, o giro cai de {g['S&P100'][0.0]:.0f}% e {g['IBOV'][0.0]:.0f}% para {g['S&P100'][escolhido['S&P100']]:.0f}% e {g['IBOV'][escolhido['IBOV']]:.0f}% por trimestre, e o erro quase n\u00e3o muda",
             f"Heur\u00edstica com penalidade, K = {K}. O c\u00edrculo e a faixa cinza marcam o \u03bb escolhido: {fmt(escolhido['S&P100'])} no S&P 100 e {fmt(escolhido['IBOV'])} no Ibovespa. "
-            f"A regra escolhe o menor \u03bb que reduz o giro em pelo menos {REDUCAO_GIRO_MINIMA * 100:.0f}% (abaixo da linha do painel de baixo) e mant\u00e9m o TE a at\u00e9 {fmt(TOLERANCIA_TE)} p.p. do menor (abaixo da linha do painel de cima).", base_pol=1.05)
+            f"A regra escolhe o maior \u03bb (o que mais reduz o giro) com TE a at\u00e9 {fmt(TOLERANCIA_TE)} p.p. do menor da grade (abaixo da linha do painel de cima).", base_pol=1.05)
     fig.subplots_adjust(top=fig.subplotpars.top - 0.04, hspace=0.18, wspace=0.16)
     salvar(fig, "38_validacao_lambda.png")
 

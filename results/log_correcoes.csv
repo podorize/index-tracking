@@ -1,4 +1,6 @@
-indice,ticker,data,regra,detalhe
-IBOV,BRAP4.SA,2021-12-17,salto do fator de ajuste neutralizado,fator variou 26.3% em um dia
-IBOV,NATU3.SA,2025-07-02,ticker reutilizado: mantido apenas o trecho recente,lacuna de 1369 pregões; série recomeça em 2025-07-02
-IBOV,UGPA3.SA,2021-06-28,salto de nível anulado (retorno = NaN),"Salto de +119% com Ibovespa +0,1%, sem reversão e sem fato relevante; retorno original 119.3%"
+etapa,indice,ticker,data,regra,detalhe
+2 (séries),IBOV,NATU3.SA,2025-07-02,ticker reutilizado: mantido apenas o trecho recente,lacuna de 1369 pregões; série recomeça em 2025-07-02
+3 (retornos),IBOV,BRAP4.SA,2021-12-17,salto do fator mantido (provento),fator variou 26.3%; retorno ajustado do dia 0.6% (normal)
+3 (retornos),IBOV,UGPA3.SA,2021-06-28,retorno trocado pelo da cotação oficial,"B3 (COTAHIST jun/2021): +119.3% no Yahoo, +1.1% na cotação oficial"
+3 (retornos),IBOV,CSMG3.SA,2020-11-19,retorno trocado pelo da cotação oficial,"B3 (COTAHIST nov/2020), com o dividendo de R$ 6,49 na data ex de 20/11/2020: +16.9% no Yahoo, +2.5% na cotação oficial"
+3 (retornos),IBOV,CSMG3.SA,2020-11-23,retorno trocado pelo da cotação oficial,"B3 (COTAHIST nov/2020), com o dividendo de R$ 6,49 na data ex de 20/11/2020: -12.4% no Yahoo, -0.2% na cotação oficial"

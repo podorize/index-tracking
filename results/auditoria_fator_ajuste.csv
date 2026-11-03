@@ -1,2 +1,2 @@
-data,ticker,variação log do fator,variação do fator (%)
-2021-12-17,BRAP4.SA,0.23331175629165635,26.277509604896878
+data,ticker,variação log do fator,variação do fator (%),retorno Close (%),retorno Adj Close (%),leitura
+2021-12-17,BRAP4.SA,0.23331189692301957,26.277527363476448,-20.32754691287586,0.6084037482461113,"provento: Close cai na data ex, retorno ajustado normal"

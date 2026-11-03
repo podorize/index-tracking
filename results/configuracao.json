@@ -1,0 +1,33 @@
+{
+  "versão": "notebook único (Parte 1 v7.7 + Parte 2)",
+  "data_fotografia_universo": "2026-09-30",
+  "data_inicial": "2019-09-30",
+  "data_final": "2026-09-30",
+  "modo_execucao": "preliminar",
+  "janela_treino": 504,
+  "janela_alternativa": 252,
+  "horizonte_teste": 63,
+  "cobertura_minima_treino": 0.98,
+  "K_MIQP": [
+    5,
+    10,
+    15,
+    20,
+    30
+  ],
+  "K_heuristica": [
+    5,
+    10,
+    15,
+    20,
+    30
+  ],
+  "carteira_de_referencia": "Heurística K=10 treino 504",
+  "time_limit_s": 10,
+  "mip_gap": 0.01,
+  "trimestres_fora_da_amostra": 20,
+  "periodo_fora_da_amostra": "set/2021 a set/2026",
+  "tempo_total_modelo_min": 38.5593059243159,
+  "fonte_precos": "Yahoo Finance",
+  "universo": "fixo em 30/09/2026; DELL, PANW, ANET e SNDK excluídas antes de 21/09/2026"
+}

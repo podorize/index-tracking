@@ -37,11 +37,13 @@ Com os resultados já gravados em `results/`, ele roda em cerca de 30 segundos e
 - `results/numeros_relatorio.csv`, com todos os números citados no relatório;
 - as nove figuras do relatório, em `figures/final/`.
 
-As simulações só rodam para arquivos ausentes em `results/selecao/` e `results/teste_final/`. Refazê-las precisa do `gurobipy`
-(licença acadêmica gratuita).
+As simulações só rodam para arquivos ausentes em `results/selecao/` e `results/teste_final/`. Refazê-las precisa da licença
+acadêmica gratuita do Gurobi; a licença que vem com o `pip install gurobipy` limita o tamanho do problema.
 
-A coleta dos dados, a auditoria e a análise exploratória estão no notebook
-[`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb), junto com as etapas anteriores do projeto.
+A coleta dos dados, a auditoria, a análise exploratória e as etapas anteriores do projeto estão no notebook
+[`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb). Com os caches do repositório, ele roda de ponta a
+ponta em cerca de 30 segundos, sem Gurobi. As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do
+notebook.
 
 ## O problema de otimização
 
@@ -57,7 +59,9 @@ sujeito a $\sum_i w_i = 1$, $w_i \ge 0$ (sem venda a descoberto) e no máximo $K
 
 ```
 data/
-  cache_dados_finor.pkl       bases limpas e auditadas (gravadas pelo notebook)
+  cache_dados_finor.pkl       bases limpas e tabelas de auditoria (gravadas pelo notebook)
+  cache_modelo_preliminar.pkl resultados da Parte 1 (seção 12 do notebook)
+  yahoo_raw.pkl               preços brutos do Yahoo Finance, para refazer a limpeza
   fontes/                     fonte Libre Franklin usada nas figuras
 notebooks/
   finor_index_tracking.ipynb  dados, EDA e etapas anteriores do projeto

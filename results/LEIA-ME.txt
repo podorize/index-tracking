@@ -1,0 +1,8 @@
+FINOR - resultados v7.7
+Universo: componentes congelados em 30/09/2026
+Fonte de preços: Yahoo Finance
+Período: 2019-09-30 a 2026-09-30
+Modo: preliminar (20 trimestres fora da amostra, set/2021 a set/2026)
+Tempo do modelo: 38.6 minutos
+
+Atenção: esta versão usa o universo final em todo o período e possui viés de sobrevivência.
