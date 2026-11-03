@@ -1,6 +1,6 @@
 """
 robustness.py
-Testes de Robustez e Estabilidade para Index Tracking (Seção 5 do Guia Parte 2):
+Testes de Robustez e Estabilidade para Index Tracking (seção 13.7 do notebook):
   1. Modelo Nulo (Monte Carlo com 1.000 carteiras aleatórias)
   2. Teste de Estresse: Remoção do Ativo Dominante
   3. Desempenho por Regimes de Mercado (COVID, Juros 2022, Calmo)

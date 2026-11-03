@@ -55,7 +55,7 @@ S&P100            504       Sem limite  0          83.35                1.18    
 - O universo final é conhecido antecipadamente: viés de sobrevivência (diferença acumulada positiva).
 - O S&P 100 usa retorno de preços; o Ibovespa, retorno total aproximado.
 - MIQP com gap alto: soluções factíveis, sem prova de ótimo global.
-- Giro penalizado só na seção 14; custos simplificados (taxa fixa).
+- Giro penalizado só na seção 13; custos simplificados (taxa fixa).
 
 ## Figuras para os slides (pasta figuras/)
 - 01_cobertura_dados.png
@@ -93,6 +93,5 @@ S&P100            504       Sem limite  0          83.35                1.18    
 - 38_validacao_lambda.png
 - 41_erro_trimestral_modelo_final.png
 - comparacao_todos_modelos_K10.png
-- curva_pareto_turnover.png
 - modelo_nulo_monte_carlo.png
 - modelo_nulo_monte_carlo_K10.png

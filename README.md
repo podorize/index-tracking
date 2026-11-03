@@ -40,9 +40,8 @@ Com os resultados já gravados em `results/`, ele roda em cerca de 30 segundos e
 As simulações só rodam para arquivos ausentes em `results/selecao/` e `results/teste_final/`. Refazê-las precisa da licença
 acadêmica gratuita do Gurobi; a licença que vem com o `pip install gurobipy` limita o tamanho do problema.
 
-A coleta dos dados, a auditoria, a análise exploratória e as etapas anteriores do projeto estão no notebook
-[`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb). Com os caches do repositório, ele roda de ponta a
-ponta em cerca de 30 segundos, sem Gurobi. As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do
+O notebook [`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb) conta o projeto inteiro, dos dados ao
+modelo final. Com os caches do repositório, ele roda de ponta a ponta em cerca de 30 segundos, sem Gurobi. As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do
 notebook.
 
 ## O problema de otimização
@@ -60,11 +59,11 @@ sujeito a $\sum_i w_i = 1$, $w_i \ge 0$ (sem venda a descoberto) e no máximo $K
 ```
 data/
   cache_dados_finor.pkl       bases limpas e tabelas de auditoria (gravadas pelo notebook)
-  cache_modelo_preliminar.pkl resultados da Parte 1 (seção 12 do notebook)
+  cache_modelo_preliminar.pkl resultados do walk-forward da seção 11 do notebook
   yahoo_raw.pkl               preços brutos do Yahoo Finance, para refazer a limpeza
   fontes/                     fonte Libre Franklin usada nas figuras
 notebooks/
-  finor_index_tracking.ipynb  dados, EDA e etapas anteriores do projeto
+  finor_index_tracking.ipynb  o projeto inteiro, dos dados ao modelo final
 src/
   data_loader.py              universo de ações e leitura das bases
   optimizer.py                MIQP com cardinalidade e giro (Gurobi)
@@ -79,38 +78,36 @@ src/
   avaliacao.py                avaliação no teste e números do relatório
   figuras.py                  figuras do relatório
   pipeline.py                 reproduz tudo
-  features.py, models_benchmark.py, compare_all_models.py   etapa 3: comparação de modelos
-  pareto_experiment.py        etapa 4: giro × erro
-  validacao_lambda.py, rebalanceamento_experiment.py         etapa 5: λ, treino e frequência
-  robustness.py, estatistica.py, pesos_aproximados.py        etapa 6: robustez
-  figuras_parte2.py           figuras das etapas 3 a 6
+  features.py, models_benchmark.py, compare_all_models.py   seção 13: comparação de modelos
+  validacao_lambda.py, rebalanceamento_experiment.py         seção 13: λ, treino e frequência
+  robustness.py, estatistica.py, pesos_aproximados.py        seção 13: robustez
+  figuras_comparacao.py       figuras da seção 13
 results/
   selecao/                    as 448 carteiras da grade (rodadas até 01/10/2024)
   teste_final/                carteiras escolhidas e alternativa simples, até set/2026
   cenarios.csv, teste_carteiras.csv, numeros_relatorio.csv, ...   saídas do modelo final
-  demais arquivos             saídas do notebook (EDA e etapas anteriores)
+  demais arquivos             saídas do notebook (seções 4 a 13)
 figures/
   final/                      figuras do relatório final
   *.png                       figuras do notebook
 docs/
   historico_criterios.md      regras de escolha na ordem em que foram fixadas
-  overleaf_etapa_anterior/    relatório da etapa anterior (Overleaf)
+  relatorio_anterior_overleaf/ versão anterior do relatório (Overleaf)
 ```
 
 ## Como o projeto chegou ao modelo final
 
-1. **Dados e EDA.** Correções auditadas (NATU3, UGPA3), outliers, viés de sobrevivência, correlação, concentração e liquidez.
-2. **Modelo de otimização.** MIQP com cardinalidade no Gurobi, partindo da heurística, em 20 trimestres fora da amostra.
-3. **Comparação de modelos.** Sete modelos com K = 10, de baselines a Lasso, clustering, heurística e MIQP. A otimização com penalidade
-   de giro teve o menor erro e o menor giro.
-4. **Controle de giro.** Curva de Pareto erro × giro, que motivou a penalidade λ.
-5. **Validação de λ, treino e rebalanceamento.** Escolha de λ num período separado e comparação de 1 × 2 anos de treino e de
-   rebalanceamento mensal × trimestral. Essas dimensões viraram a grade do modelo final.
-6. **Robustez.** Modelo nulo com carteiras aleatórias, regimes de mercado e estresse.
-7. **Modelo final.** K, λ e configuração passam a ser escolhidos pela chance de passar do limite da CVM, separadamente por índice e
-   por apetite ao risco, e avaliados num teste que a escolha nunca viu.
+O notebook segue uma narrativa só:
 
-As etapas 1 a 6 usavam K e λ fixos e o erro de rastreamento médio como critério. Onde as conclusões diferem, vale o modelo final.
+1. **Dados e EDA** (seções 1 a 6). Correções auditadas (NATU3, UGPA3), outliers, viés de sobrevivência, correlação, concentração
+   e liquidez.
+2. **Modelo** (seções 7 a 12). MIQP com cardinalidade, partindo de uma heurística, em 20 trimestres fora da amostra: quantas ações
+   são precisas e quanto histórico usar.
+3. **Comparação, giro e robustez** (seção 13). Sete modelos com K = 10, de baselines a Lasso, clustering e heurísticas. A heurística
+   com penalidade de giro erra quase o mesmo que a melhor alternativa e negocia de 13 a 32 vezes menos. Seguem a escolha de λ, a
+   comparação de 1 × 2 anos de treino e de rebalanceamento mensal × trimestral, e os testes de robustez.
+4. **Modelo final** (seção 14). K, λ, histórico e frequência passam a ser escolhidos pela chance de passar do limite da CVM,
+   separadamente por índice e por apetite ao risco, num período separado do teste.
 
 ## Limites
 

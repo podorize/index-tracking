@@ -1,6 +1,6 @@
 """
 compare_all_models.py
-Comparação completa dos modelos do Guia Parte 2 (Etapa 13 do relatório), com K e janela de treino parametrizados:
+Comparação completa dos modelos (seção 13 do notebook), com K e janela de treino parametrizados:
   1. Baselines (Top K peso, Top K correlação 1/K, Top K correlação com pesos otimizados)
   2. Machine learning (Lasso positivo, clustering hierárquico)
   3. Otimização: heurística gulosa + trocas (a da Etapa 11) e heurística com controle de giro (o modelo final)
@@ -57,7 +57,7 @@ METODOS_GIRO = {"Heurística com controle de giro": "heuristica"}
 MODELO_FINAL = "Heurística com controle de giro"
 
 # Regimes do período fora da amostra (Seção 5.5 do Guia). A Covid (fev-abr/2020) fica antes
-# do primeiro trimestre de teste (set/2021) e só aparece na Parte 1.
+# do primeiro trimestre de teste (set/2021) e só aparece na EDA.
 REGIMES_OOS = {
     "Fim de 2021": ("2021-09-01", "2021-12-31"),
     "Alta de juros 2022": ("2022-01-01", "2022-12-31"),

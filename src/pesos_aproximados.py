@@ -1,7 +1,7 @@
 """
 pesos_aproximados.py
-Gera results/pesos_aproximados.csv, usado pelo baseline "Top K por peso" (Seção 3.2 do Guia Parte 2).
-Mesma aproximação da Parte 1 (Seção 7.14 do Colab): peso = valor de mercado atual do Yahoo / soma do índice.
+Gera results/pesos_aproximados.csv, usado pelo baseline "Top K por peso" (seção 13 do notebook).
+Mesma aproximação da seção 6.14 do notebook: peso = valor de mercado atual do Yahoo / soma do índice.
   - Classes da mesma empresa (GOOG/GOOGL, PETR3/PETR4, BBDC3/BBDC4) contam uma vez: o Yahoo informa,
     para cada classe, o valor de mercado da empresa inteira.
   - No Ibovespa a aproximação ignora o free float e superestima empresas com controlador.

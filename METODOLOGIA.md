@@ -1,7 +1,7 @@
 # Metodologia do modelo final
 
-Este documento descreve o modelo do relatório final e como ele é reproduzido pelo código (`python -m src.pipeline`). As etapas
-anteriores do projeto, que levaram a essas escolhas, estão resumidas no fim.
+Este documento descreve o modelo do relatório final e como ele é reproduzido pelo código (`python -m src.pipeline`). O caminho até
+ele, contado no notebook, está resumido no fim.
 
 ## Pergunta
 
@@ -80,23 +80,21 @@ Também calcula a decomposição de Shapley da mudança da chance entre largura 
 - **Amostra curta.** O teste é curto e as janelas se sobrepõem.
 - **Escolha do S&P 100 apertada.** A forma de montar do S&P 100 venceu por 0,25 p.p., menos que o erro padrão.
 
-## Etapas anteriores do projeto
+## Como chegamos aqui
 
-Estão no notebook `notebooks/finor_index_tracking.ipynb` e nos módulos correspondentes de `src/`:
+O notebook `notebooks/finor_index_tracking.ipynb` conta o caminho numa narrativa só, com os módulos correspondentes de `src/`:
 
-1. **Dados e EDA** (seções 2 a 7 e apêndice A): coleta, correções auditadas (NATU3, UGPA3), qualidade, outliers, viés de
+1. **Dados e EDA** (seções 1 a 6 e apêndice A): coleta, correções auditadas (NATU3, UGPA3), qualidade, outliers, viés de
    sobrevivência, correlação, concentração e liquidez.
-2. **Modelo de otimização** (seções 8 a 13): MIQP com restrição de cardinalidade (`src/optimizer.py`), resolvido no Gurobi a partir da
-   heurística, em walk-forward de 20 trimestres; tamanho da janela de treino.
-3. **Comparação de modelos** (seção 14.2, `src/compare_all_models.py`): sete modelos com K = 10. A otimização com penalidade de giro
-   teve o menor erro e o menor giro nos dois índices. No modelo final, a mesma penalidade é resolvida pela heurística
-   (`src/heuristica_giro.py`), que é determinística: o Gurobi para por tempo e o resultado varia entre execuções, o que atrapalharia
-   comparar as 448 carteiras da grade.
-4. **Controle de giro e custos** (seção 14.3, `src/pareto_experiment.py`): curva de Pareto erro × giro, que motivou a penalidade λ.
-5. **Validação de λ e rebalanceamento** (seções 14.4.1 e 14.5, `src/validacao_lambda.py`, `src/rebalanceamento_experiment.py`):
-   escolha de λ num período separado e comparação de 1 × 2 anos de treino e de rebalanceamento mensal × trimestral. Essas dimensões
-   viraram a grade do modelo final.
-6. **Robustez** (seção 14.6, `src/robustness.py`, `src/estatistica.py`): modelo nulo, regimes de mercado e estresse.
+2. **Modelo de otimização** (seções 7 a 12): MIQP com restrição de cardinalidade (`src/optimizer.py`), resolvido no Gurobi a partir da
+   heurística, em walk-forward de 20 trimestres; tamanho da janela de treino e número de ações.
+3. **Comparação, giro e robustez** (seção 13, `src/compare_all_models.py`, `src/validacao_lambda.py`,
+   `src/rebalanceamento_experiment.py`, `src/robustness.py`, `src/estatistica.py`): sete modelos com K = 10. A heurística com
+   penalidade de giro erra quase o mesmo que a melhor alternativa e negocia de 13 a 32 vezes menos. Ela é determinística, ao
+   contrário do Gurobi, que para por tempo, e por isso é o motor do modelo final. Seguem a escolha de λ, a comparação de 1 × 2 anos de
+   treino e de rebalanceamento mensal × trimestral, e o modelo nulo, os regimes e o estresse.
+4. **Modelo final** (seção 14): o que está descrito acima.
 
-O modelo final substitui as conclusões dessas etapas onde elas diferem. Antes, K, λ e a configuração eram fixados por erro de
-rastreamento médio; agora são escolhidos pela chance de passar do limite da CVM, separadamente por índice e por apetite ao risco.
+Até a seção 13, K, λ e a configuração eram comparados pelo erro de rastreamento médio, nos mesmos trimestres em que eram medidos. O
+modelo final os escolhe pela chance de passar do limite da CVM, separadamente por índice e por apetite ao risco, num período separado
+do teste.

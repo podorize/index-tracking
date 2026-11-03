@@ -1,6 +1,6 @@
 """
 features.py
-Feature Engineering e Feature Selection para Index Tracking (Guia Parte 2).
+Feature Engineering e Feature Selection para Index Tracking (seção 13.1 do notebook).
 Calcula indicadores estatísticos das ações exclusivamente no conjunto de treino:
   - Correlação com o índice
   - Beta em relação ao índice
@@ -62,7 +62,7 @@ def construir_features(ret_acoes, ret_indice, mapa_setores=None):
 
 def selecionar_acoes_filtro_redundancia(ret_acoes, ret_indice, top_n=40, limite_corr_par=0.90, mapa_setores=None):
     """
-    Abordagem de seleção descrita na Seção 2.3 do Guia Parte 2:
+    Abordagem de seleção descrita no guia do projeto:
       1. Filtra as top_n ações com maior correlação com o índice
       2. Remove ações com correlação bilateral > limite_corr_par mantendo a de maior correlação com o índice
     """

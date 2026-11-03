@@ -1,9 +1,10 @@
 """
-figuras_parte2.py
-Figuras da Parte 2 no mesmo estilo das figuras da Parte 1 (título = conclusão, subtítulo = o que se vê,
+figuras_comparacao.py
+Figuras da comparação de modelos, do controle de giro e da robustez (seção 13 do notebook), no mesmo estilo das figuras da EDA
+(título = conclusão, subtítulo = o que se vê,
 cores fixas por índice: azul S&P 100, laranja Ibovespa). Lê os resultados de compare_all_models.py,
 validacao_lambda.py e rebalanceamento_experiment.py (arquivos com sufixo _K{K}).
-  31_comparativo_modelos.png   TE e giro dos 8 modelos (Tabela 4.3 do Guia)
+  31_comparativo_modelos.png   TE e giro dos 7 modelos
   33_modelo_nulo.png           modelo final × 1.000 carteiras aleatórias nos mesmos 20 trimestres
   34_te_por_regime.png         TE por regime de mercado fora da amostra
   35_diferenca_acumulada.png   Diferença acumulada carteira − índice por modelo

@@ -1,6 +1,6 @@
 """
 models_benchmark.py
-Implementação de todos os modelos de Index Tracking previstos no Guia Parte 2:
+Implementação dos modelos de Index Tracking comparados na seção 13 do notebook:
   1. Baselines obrigatórios:
      - Top K por peso no índice
      - Top K por correlação (pesos iguais 1/K)
@@ -30,12 +30,12 @@ LIMIAR_PESO = 1e-4
 
 def carregar_pesos_aproximados():
     """
-    Carrega os pesos aproximados dos índices (valor de mercado atual, Seção 7.14 da Parte 1).
+    Carrega os pesos aproximados dos índices (valor de mercado atual, seção 6.14 do notebook).
     Sem esse arquivo o baseline "Top K por peso" não tem como ordenar as ações, por isso falha alto.
     """
     caminho = Path("results/pesos_aproximados.csv")
     if not caminho.exists():
-        raise FileNotFoundError(f"{caminho} não encontrado: exporte-o da Parte 1 (Seção 7.14 do Colab).")
+        raise FileNotFoundError(f"{caminho} não encontrado: gere-o com python -m src.pesos_aproximados.")
     df_p = pd.read_csv(caminho)
     col_peso = next(c for c in ["peso", "peso_aprox", "peso aproximado (%)"] if c in df_p.columns)
     return dict(zip(df_p["ticker"], df_p[col_peso].astype(float)))
