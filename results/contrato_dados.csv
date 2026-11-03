@@ -1,0 +1,3 @@
+indice,universo,fonte preços,campo componentes,benchmark,campo benchmark,convenção,início observado,fim observado,pregões benchmark
+S&P100,fotografia fixa em 30/09/2026,Yahoo Finance,Close,^OEX,Close,preço,2019-10-01,2026-09-30,1759
+IBOV,fotografia fixa em 30/09/2026,Yahoo Finance,Adj Close,^BVSP,Close,retorno total aproximado,2019-10-01,2026-09-30,1742

@@ -1,0 +1,4 @@
+indice,ticker,data,regra,detalhe
+IBOV,BRAP4.SA,2021-12-17,salto do fator de ajuste neutralizado,fator variou 26.3% em um dia
+IBOV,NATU3.SA,2025-07-02,ticker reutilizado: mantido apenas o trecho recente,lacuna de 1369 pregões; série recomeça em 2025-07-02
+IBOV,UGPA3.SA,2021-06-28,salto de nível anulado (retorno = NaN),"Salto de +119% com Ibovespa +0,1%, sem reversão e sem fato relevante; retorno original 119.3%"

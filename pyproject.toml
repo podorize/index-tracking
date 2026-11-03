@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "index-tracking-finor"
+version = "1.0.0"
+description = "Modelo de Index Tracking com restrição de cardinalidade K e penalidade de Turnover (S&P 100 e IBOVESPA)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26.0",
+    "pandas>=2.0.0",
+    "scipy>=1.11.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "yfinance>=0.2.40",
+    "gurobipy>=11.0.0",
+    "scikit-learn>=1.3.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

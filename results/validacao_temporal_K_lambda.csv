@@ -1,0 +1,5 @@
+indice,K,lambda,"TE escolha, 12 rodadas (% a.a.)","TE medida, 8 últimas (% a.a.)",TD medida (p.p. a.a.),Giro médio medida (% trim),modelo
+S&P100,20,50.0,2.906813638864331,4.49216469217861,-0.4955054081346273,0.21894850213345216,escolhido só com as 12 primeiras rodadas
+IBOV,20,25.0,3.747325836811691,3.31602931827649,0.8766474791716969,0.3637191369504458,escolhido só com as 12 primeiras rodadas
+S&P100,20,6.0,3.217676507569426,3.752782047516508,0.8876965480828456,3.8665696074166798,"escolhido com as 20 rodadas (K = 20, λ = 6)"
+IBOV,20,6.0,3.693094099262224,2.89324226194663,0.2883063961467947,2.2872825042956375,"escolhido com as 20 rodadas (K = 20, λ = 6)"
