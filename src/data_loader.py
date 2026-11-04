@@ -10,6 +10,8 @@ Os módulos de modelagem (`src/`) leem esse mesmo arquivo, então notebook e có
 from pathlib import Path
 import pandas as pd
 
+from src.cache import ler
+
 DATA_INICIAL = pd.Timestamp("2019-09-30")
 DATA_FINAL = pd.Timestamp("2026-09-30")
 
@@ -63,7 +65,7 @@ def preparar_bases(cache=CACHE_DADOS):
             f"{cache} não encontrado. Execute a seção 'Dados' de notebooks/finor_index_tracking.ipynb "
             "(com RECALCULAR_DADOS = True) para gerar o cache."
         )
-    return pd.read_pickle(cache)["bases"]
+    return ler(cache)["bases"]
 
 
 if __name__ == "__main__":

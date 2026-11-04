@@ -18,8 +18,11 @@ o que leva cerca de 0,4 ms por QP.
 import time
 
 import numpy as np
-import gurobipy as gp
-from gurobipy import GRB
+try:
+    import gurobipy as gp
+    from gurobipy import GRB
+except ImportError:  # só é preciso para recalcular os modelos; ler os resultados funciona sem o Gurobi
+    gp = GRB = None
 
 from src.optimizer import ambiente_gurobi
 

@@ -41,8 +41,13 @@ As simulações só rodam para arquivos ausentes em `results/selecao/` e `result
 acadêmica gratuita do Gurobi; a licença que vem com o `pip install gurobipy` limita o tamanho do problema.
 
 O notebook [`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb) conta o projeto inteiro, dos dados ao
-modelo final. Com os caches do repositório, ele roda de ponta a ponta em cerca de 30 segundos, sem Gurobi. As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do
-notebook.
+modelo final. Com os caches do repositório, ele roda de ponta a ponta em cerca de 30 segundos, sem Gurobi, com pandas 2.x ou 3.x.
+As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do notebook.
+
+**No Google Colab:** em *Arquivo › Abrir notebook › GitHub*, marque *Incluir repositórios particulares* e escolha
+`podorize/index-tracking`. Como o repositório é privado, o notebook precisa de um token do GitHub para clonar os dados: crie um token
+com leitura do repositório (GitHub › Settings › Developer settings › Personal access tokens) e guarde-o nos *Secrets* do Colab (ícone
+de chave) com o nome `GITHUB_TOKEN`. Depois, é só rodar as células de cima para baixo.
 
 ## O problema de otimização
 
