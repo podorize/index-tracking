@@ -34,7 +34,7 @@ def tarefa(c):
     arq = arquivo(SAIDA, *c)
     if not arq.exists():
         r = simular(*c, fim=CORTE)
-        r[r["data_fim"] <= CORTE].to_csv(arq, index=False)
+        r[(r["data_fim"] <= CORTE) & (r["dias"] == c[3])].to_csv(arq, index=False)  # só rodadas completas (H pregões)
     return c
 
 

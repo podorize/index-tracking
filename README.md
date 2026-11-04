@@ -66,9 +66,9 @@ horas, conforme a máquina):
 docker run --rm -v "$(pwd)/saida:/app/saida" finor-index-tracking --refazer
 ```
 
-As versões das bibliotecas são fixas (`requirements-docker.txt`) e o método é determinístico: refeitas do zero, as carteiras do
-teste final saem idênticas às gravadas. O Gurobi usado na heurística roda com a licença restrita que vem com o `gurobipy` (válida até nov/2027); não é
-preciso instalar licença.
+As versões das bibliotecas são fixas (`requirements-docker.txt`) e o método é determinístico: refeitas do zero, as 448 carteiras
+da grade e as do teste final saem idênticas às gravadas, e os números do relatório não mudam. O Gurobi usado na heurística roda
+com a licença restrita que vem com o `gurobipy` (válida até nov/2027); não é preciso instalar licença.
 
 ### Sem Docker
 
