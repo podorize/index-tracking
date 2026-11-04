@@ -86,6 +86,7 @@ def simular_walk_forward(
     seed=42,
     metodo="miqp",
     retornar_series=False,
+    retornar_pesos=False,
 ):
     """
     `metodo`: "miqp" (Gurobi, partindo da carteira anterior), "heuristica" (heurística gulosa + trocas com a penalidade de giro,
@@ -94,6 +95,7 @@ def simular_walk_forward(
     A frequência de rebalanceamento vem do horizonte de teste (63 pregões = 4 vezes por ano; 21 = 12 vezes).
     lambda_anual é a penalidade sobre o giro anualizado: o multiplicador do solver é rebal_por_ano × λ ÷ 252,
     então λ tem o mesmo significado em qualquer frequência.
+    Com `retornar_series`, devolve também os retornos diários; com `retornar_pesos`, os pesos de cada rodada (data, ação, peso).
     """
     janelas = construir_janelas(nome_indice, bases, J=janela_treino, H=horizonte_teste, n_janelas=n_janelas,
                                 inicio_teste=inicio_teste, fim_teste=fim_teste)
@@ -104,6 +106,7 @@ def simular_walk_forward(
     resultados_janelas = []
     series_retornos_carteira = []
     series_retornos_indice = []
+    pesos_rodadas = []
 
     # Conversão de lambda anual para o multiplicador gamma do solver
     gamma = (rebal_por_ano * lambda_anual) / ANUAL if lambda_anual > 0 else 0.0
@@ -185,6 +188,8 @@ def simular_walk_forward(
             ).abs().sum()
 
         datas_ts = jan["datas_teste"]
+        if retornar_pesos:
+            pesos_rodadas += [{"data": datas_ts[0], "acao": t, "peso": float(v)} for t, v in pesos_novos.items()]
         R_ts = b["R"].reindex(datas_ts)[pesos_novos.index]
         y_ts = b["y"].reindex(datas_ts).rename("indice")
 
@@ -272,6 +277,9 @@ def simular_walk_forward(
         "Information Ratio Líquido": ir_liq,
     }
 
+    saida = (metricas_globais, df_janelas)
     if retornar_series:
-        return metricas_globais, df_janelas, pd.DataFrame({"carteira": r_cart_todos, "indice": r_idx_todos})
-    return metricas_globais, df_janelas
+        saida += (pd.DataFrame({"carteira": r_cart_todos, "indice": r_idx_todos}),)
+    if retornar_pesos:
+        saida += (pd.DataFrame(pesos_rodadas),)
+    return saida

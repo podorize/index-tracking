@@ -23,23 +23,62 @@ histórico, carteira refeita a cada trimestre e penalidade de giro λ = 6; no Ib
 
 O método completo está em [METODOLOGIA.md](METODOLOGIA.md).
 
+## App
+
+O app escolhe a carteira a partir do índice e do risco máximo que a diretoria aceita, ou direto pelo número de ações. Ele mostra a
+carteira contra o índice, o desvio de 12 meses contra o limite de ±4 p.p., a chance de passar do limite por número de ações (prevista
+e no teste) e a composição da carteira em cada rodada, com o que entrou e saiu.
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Ou pelo Docker, em http://localhost:8501:
+
+```bash
+docker run --rm -p 8501:8501 --entrypoint streamlit finor-index-tracking run app.py
+```
+
+O app lê `results/app/dados_app.pkl`: as carteiras de 5 a 50 ações e sem limite, na forma de montar escolhida para cada índice, com
+os pesos de cada rodada. O pipeline grava esse arquivo no último passo (`python -m src.app_dados` refaz só ele).
+
 ## Como reproduzir
+
+### Pipeline com Docker (do dado ao resultado)
+
+```bash
+docker build -t finor-index-tracking .
+docker run --rm -v "$(pwd)/saida:/app/saida" finor-index-tracking
+```
+
+A imagem traz os dados limpos (`data/cache_dados_finor.pkl`) e as simulações já gravadas. O container segue grade → regra →
+teste final → alternativa simples → avaliação → figuras → dados do app e grava em `saida/`, em cerca de 40 segundos:
+
+- `cenarios.csv` e `teste_carteiras.csv`: as carteiras de cada cenário e o resultado no teste;
+- `numeros_relatorio.csv`: todos os números citados no relatório;
+- as tabelas da escolha e, em `saida/figuras/`, as nove figuras do relatório.
+
+Para refazer tudo a partir dos dados, inclusive as 448 carteiras da grade e o teste final, acrescente `--refazer` (leva de 1 a 2
+horas, conforme a máquina):
+
+```bash
+docker run --rm -v "$(pwd)/saida:/app/saida" finor-index-tracking --refazer
+```
+
+As versões das bibliotecas são fixas (`requirements-docker.txt`) e o método é determinístico: refeitas do zero, as carteiras do
+teste final saem idênticas às gravadas. O Gurobi usado na heurística roda com a licença restrita que vem com o `gurobipy` (válida até nov/2027); não é
+preciso instalar licença.
+
+### Sem Docker
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m src.pipeline
+python -m src.pipeline              # ou: python -m src.pipeline --refazer
 ```
 
-O pipeline parte de `data/cache_dados_finor.pkl` e segue grade → regra → teste final → alternativa simples → avaliação → figuras.
-Com os resultados já gravados em `results/`, ele roda em cerca de 30 segundos e regrava:
-
-- as tabelas da escolha;
-- `results/numeros_relatorio.csv`, com todos os números citados no relatório;
-- as nove figuras do relatório, em `figures/final/`.
-
-As simulações só rodam para arquivos ausentes em `results/selecao/` e `results/teste_final/`. Refazê-las precisa da licença
-acadêmica gratuita do Gurobi; a licença que vem com o `pip install gurobipy` limita o tamanho do problema.
+Os resultados ficam em `results/` e as figuras em `figures/final/`.
 
 O notebook [`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracking.ipynb) conta o projeto inteiro, dos dados ao
 modelo final. Com os caches do repositório, ele roda de ponta a ponta em cerca de 30 segundos, sem Gurobi, com pandas 2.x ou 3.x.
@@ -63,6 +102,10 @@ sujeito a $\sum_i w_i = 1$, $w_i \ge 0$ (sem venda a descoberto) e no máximo $K
 ## Estrutura
 
 ```
+app.py                        app Streamlit: índice, risco aceito e a carteira contra o índice
+Dockerfile                    pipeline do modelo final e app em container
+requirements-docker.txt       versões fixas do pipeline e do app
+requirements.txt              dependências do notebook
 data/
   cache_dados_finor.pkl       bases limpas e tabelas de auditoria (gravadas pelo notebook)
   cache_modelo_preliminar.pkl resultados do walk-forward da seção 11 do notebook
@@ -84,6 +127,7 @@ src/
   avaliacao.py                avaliação no teste e números do relatório
   figuras.py                  figuras do relatório
   pipeline.py                 reproduz tudo
+  app_dados.py                dados do app: carteiras de todos os tamanhos, com pesos
   features.py, models_benchmark.py, compare_all_models.py   seção 13: comparação de modelos
   validacao_lambda.py, rebalanceamento_experiment.py         seção 13: λ, treino e frequência
   robustness.py, estatistica.py, pesos_aproximados.py        seção 13: robustez
@@ -91,6 +135,7 @@ src/
 results/
   selecao/                    as 448 carteiras da grade (rodadas até 01/10/2024)
   teste_final/                carteiras escolhidas e alternativa simples, até set/2026
+  app/dados_app.pkl           dados do app
   cenarios.csv, teste_carteiras.csv, numeros_relatorio.csv, ...   saídas do modelo final
   demais arquivos             saídas do notebook (seções 4 a 13)
 figures/

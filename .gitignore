@@ -221,3 +221,6 @@ __marimo__/
 # Projeto
 .DS_Store
 .claude/
+
+# Saída do pipeline em Docker
+saida/

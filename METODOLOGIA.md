@@ -71,6 +71,13 @@ Para cada carteira dos cenários, e para a de 20 ações do Ibovespa, que a regr
 Também calcula a decomposição de Shapley da mudança da chance entre largura e centro. Todos os números citados no relatório ficam em
 `results/numeros_relatorio.csv`.
 
+## App (`app.py`, `src/app_dados.py`)
+
+O app aplica a etapa 2 da regra a qualquer risco máximo, de 5% a 40%, e não só aos três cenários. Para isso, `src/app_dados.py`
+simula na forma de montar de cada índice as sete carteiras da grade (5 a 50 ações e sem limite) do início da escolha ao fim dos
+dados, com os pesos de cada rodada, e calcula os números do teste com a mesma conta de `src/avaliacao.py`. As carteiras dos cenários
+coincidem com as do teste final.
+
 ## Limites
 
 - **Viés de sobrevivência.** As empresas que saíram dos índices não estão nos dados. O centro da chance desconta a parte comum a todas
