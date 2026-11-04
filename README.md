@@ -1,5 +1,6 @@
 # Index Tracking: S&P 100 e Ibovespa (Projeto Finor)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/podorize/index-tracking/blob/main/notebooks/finor_index_tracking.ipynb)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Solver](https://img.shields.io/badge/solver-Gurobi-red)
 
@@ -44,10 +45,10 @@ O notebook [`notebooks/finor_index_tracking.ipynb`](notebooks/finor_index_tracki
 modelo final. Com os caches do repositório, ele roda de ponta a ponta em cerca de 30 segundos, sem Gurobi, com pandas 2.x ou 3.x.
 As chaves da célula de setup refazem cada parte; os tempos medidos estão no início do notebook.
 
-**No Google Colab:** em *Arquivo › Abrir notebook › GitHub*, marque *Incluir repositórios particulares* e escolha
-`podorize/index-tracking`. Como o repositório é privado, o notebook precisa de um token do GitHub para clonar os dados: crie um token
-com leitura do repositório (GitHub › Settings › Developer settings › Personal access tokens) e guarde-o nos *Secrets* do Colab (ícone
-de chave) com o nome `GITHUB_TOKEN`. Depois, é só rodar as células de cima para baixo.
+**No Google Colab:** abra pelo botão abaixo e rode as células de cima para baixo. O notebook clona o repositório com os dados e
+instala o que falta.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/podorize/index-tracking/blob/main/notebooks/finor_index_tracking.ipynb)
 
 ## O problema de otimização
 
